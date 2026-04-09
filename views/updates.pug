@@ -1,0 +1,37 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Games | HubSpot Custom Objects
+    link(rel="stylesheet" href="/css/style.css")
+
+  body
+    header.site-header
+        .header-inner
+            h1 Integrating With HubSpot I: Foundations
+            h2.subtitle 🎮 Games Custom Object
+            
+    main.container
+        form(method="POST")
+            label(for="name") Name
+            input(type="text" name="name" value=data ? data.name : "" required)
+            label Platform
+            - var platforms = data && data.platform ? data.platform : ""
+            div.checkbox-group(style="display: flex; gap: 15px; margin-bottom: 10px; margin-top: 5px;")
+                label(style="display: flex; align-items: center; margin-top: 0; cursor: pointer;")
+                    input(type="checkbox" name="platform" value="PC" style="display: inline-block; margin: 0 5px 0 0;" checked=platforms.includes('PC'))
+                    | PC
+                label(style="display: flex; align-items: center; margin-top: 0; cursor: pointer;")
+                    input(type="checkbox" name="platform" value="PS5" style="display: inline-block; margin: 0 5px 0 0;" checked=platforms.includes('PS5'))
+                    | PS5
+                label(style="display: flex; align-items: center; margin-top: 0; cursor: pointer;")
+                    input(type="checkbox" name="platform" value="Switch" style="display: inline-block; margin: 0 5px 0 0;" checked=platforms.includes('Switch'))
+                    | Switch
+                label(style="display: flex; align-items: center; margin-top: 0; cursor: pointer;")
+                    input(type="checkbox" name="platform" value="Xbox" style="display: inline-block; margin: 0 5px 0 0;" checked=platforms.includes('Xbox'))
+                    | Xbox
+            label(for="release_date") Release Date
+            input(type="date" name="release_date" value=data ? data.release_date : "" required)
+            
+            button(type="submit") Submit

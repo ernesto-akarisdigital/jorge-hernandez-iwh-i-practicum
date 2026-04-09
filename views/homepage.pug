@@ -1,0 +1,32 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Integrating With HubSpot I: Foundations
+    link(rel="stylesheet" href="/css/style.css")
+
+  body
+    header.site-header
+      .header-inner
+        h1 Integrating With HubSpot I: Foundations
+        h2.subtitle 🎮 Games Custom Object
+
+    main.container
+        a.btn-add(href="/update-cobj") Add to this table
+        table.games-table
+          thead
+            tr
+              th Name
+              th Platform
+              th Release date
+              th Acciones
+          tbody
+            each game, index in data
+              tr
+                td= game.properties.name || '—'
+                td= game.properties.platform.replaceAll(';', ' - ') || '—'
+                td= game.properties.release_date || '—'
+                td
+                  a.btn-edit(href=`/update-cobj?id=${game.id}`) Edit
+                  a.btn-edit(href=`/delete-cobj?id=${game.id}`) Delete
